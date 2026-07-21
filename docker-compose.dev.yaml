@@ -1,0 +1,18 @@
+services:
+    app:
+        build:
+            target: dev
+        environment:
+            - NODE_ENV=development
+            - MEDIASOUP_ANNOUNCED_IP=127.0.0.1
+        volumes:
+            - ./src:/app/src
+            - ./tsconfig.json:/app/tsconfig.json
+            - ./nodemon.json:/app/nodemon.json
+            # anonymous volume: keeps the container's own node_modules (built for
+            # the container's OS/arch) from being shadowed by a host bind mount.
+            # Critical for mediasoup — its worker is a native binary, and a
+            # host-installed node_modules (e.g. from macOS) will crash inside
+            # the Linux container if it gets mounted over this.
+            - /app/node_modules
+        command: npm run dev

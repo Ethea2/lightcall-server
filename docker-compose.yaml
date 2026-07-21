@@ -1,0 +1,12 @@
+services:
+    app:
+        build:
+            context: .
+        environment:
+            - PORT=3000
+            - MEDIASOUP_MIN_PORT=40000
+            - MEDIASOUP_MAX_PORT=49999
+        # mediasoup needs a wide UDP range reachable directly — simplest on Linux
+        # via host networking. See note in chat if you're on Docker Desktop
+        # (macOS/Windows), where this doesn't behave like true host networking.
+        network_mode: host

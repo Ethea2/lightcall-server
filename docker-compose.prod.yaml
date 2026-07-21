@@ -1,0 +1,21 @@
+services:
+    app:
+        build:
+            target: prod
+        restart: unless-stopped
+        environment:
+            - NODE_ENV=production
+            - MEDIASOUP_ANNOUNCED_IP=203.0.113.10 # replace with your server's public IP
+
+    caddy:
+        image: caddy:2-alpine
+        restart: unless-stopped
+        network_mode: host
+        volumes:
+            - ./Caddyfile:/etc/caddy/Caddyfile:ro
+            - caddy_data:/data
+            - caddy_config:/config
+
+volumes:
+    caddy_data:
+    caddy_config:

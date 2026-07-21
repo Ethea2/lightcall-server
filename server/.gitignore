@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+*.tsbuildinfo
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Docker
+letsencrypt/
+caddy_data/
+caddy_config/
+
+# Coverage / test output
+coverage/
+.nyc_output/
+
+# Misc
+*.pem
+*.key
